@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav .logo {
+    color: rgb(94, 178, 180);
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+.search {
+    background: rgb(225, 215, 215);
+    height: 80px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    gap:20px;
+    
+}
+
+
+.search input[type="text"] {    
+    padding: 8px 12px;
+    border: 1px solid ;
+    border-radius: 10px;
+    font-size: 15px;
+    outline:none;
+    width: 500px;
+
+    }
+
+ .navbar {
+    
+    background-color: rgb(139, 135, 135);
+    padding: 10px; 
+    margin: 0px;
+    display: flex; 
+    align-items: center; 
+}
+
+.navbar ul{
+    list-style-type: none ;
+    background-color: rgb(139, 135, 135);
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    gap: 25px;
+    
+}
+
+.navbar a{
+   color: white;
+   text-decoration: none;
+   padding: 15px;
+   display: block;
+   
+}
+
+.navbar a:hover{
+    background-color: rgb(69, 66, 66);
+}
+
+
+.appointment-btn {
+    background-color:red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left:auto;
+}
+
+.appointment-btn:hover {
+    background-color:blue;
+}
