@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2025 at 11:32 AM
+-- Generation Time: Sep 23, 2025 at 10:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,7 +39,6 @@ CREATE TABLE `booking_table` (
 --
 
 INSERT INTO `booking_table` (`Booking_Id`, `Booking_Date`, `Event_ID`, `Customer_ID`) VALUES
-('B001', '2025-01-10', 'E001', 'C001'),
 ('B002', '2025-02-15', 'E002', 'C002');
 
 -- --------------------------------------------------------
@@ -64,7 +63,6 @@ CREATE TABLE `customer_table` (
 --
 
 INSERT INTO `customer_table` (`Customer_ID`, `Customer_User_Name`, `Customer_Full_Name`, `Customer_Email_Address`, `Customer_Gender`, `Customer_Contact_No`, `Customer_password`, `Users_ID`) VALUES
-('C001', 'arifk', 'Arif Khan', 'arif.khan@email.com', 'Male', '01730000001', 'arif123', ''),
 ('C002', 'sohanar', 'Sohana Rahman', 'sohana.rahman@email.com', 'Female', '01730000002', 'sohana456', '');
 
 -- --------------------------------------------------------
@@ -86,11 +84,13 @@ CREATE TABLE `event_table` (
 --
 
 INSERT INTO `event_table` (`Event_ID`, `Event_type`, `Event_Status`, `Event_Price`, `Manager_ID`) VALUES
-('E001', 'Wedding', 'Active', 50000, 'M001'),
-('E002', 'Birthday', 'Active', 15000, 'M001'),
-('E003', 'Conference', 'Inactive', 30000, 'M001'),
-('E004', 'Concert', 'Active', 20000, 'M001'),
-('E005', 'Workshop', 'Inactive', 70000, 'M001');
+('E001', 'Wedding', 'active', 34000, 'M001'),
+('E002', 'Birthday', 'Active', 35000, 'M001'),
+('E003', 'Convocation', 'Inactive', 40000, 'M001'),
+('E004', 'Reunion', 'Active', 60000, 'M001'),
+('E005', 'Corporate Event', 'Inctive', 55000, 'M001'),
+('E006', 'Award Ceremony', 'Active', 52000, 'M001'),
+('E007', 'Religious event', 'inactive', 34000, 'M001');
 
 -- --------------------------------------------------------
 
@@ -186,8 +186,9 @@ CREATE TABLE `users_table` (
 --
 
 INSERT INTO `users_table` (`Users_ID`, `Users_Name`, `Users_Full_Name`, `Users_Email_Address`, `Users_Gender`, `Users_Contact_No`, `Users_Password`, `Users_Role`) VALUES
-('01', 'nabil@12', 'Nabil khan', 'nabilkhan@gmail.com', 'male', '01762876478', '12', '1'),
-('02', 'maria@13', 'Maria ', 'maria@gmail.com', 'female', '01762876479', '13', '2');
+('1', 'nabil@12', 'Nabil khan', 'nabilkhan@gmail.com', 'male', '01762876478', '1111', '1'),
+('2', 'maria@13', 'Maria ', 'maria@gmail.com', 'female', '01762876479', '2222', '2'),
+('3', 'maliha@14', 'Maliha', 'maliha@gmail.com', 'female', '01762876480', '3333', '3');
 
 --
 -- Indexes for dumped tables
