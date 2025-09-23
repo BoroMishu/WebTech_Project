@@ -7,34 +7,12 @@
 }
 
 nav .logo {
-    color: rgb(94, 178, 180);
     font-size: 30px;
     font-weight: bold;
     
 }
 
-.search {
-    background: rgb(225, 215, 215);
-    height: 80px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    gap:20px;
-    
-}
 
-
-.search input[type="text"] {    
-    padding: 8px 12px;
-    border: 1px solid ;
-    border-radius: 10px;
-    font-size: 15px;
-    outline:none;
-    width: 500px;
-
-    }
 
  .navbar {
     
@@ -44,6 +22,7 @@ nav .logo {
     display: flex; 
     align-items: center; 
 }
+
 
 .navbar ul{
     list-style-type: none ;
@@ -84,3 +63,41 @@ nav .logo {
 .appointment-btn:hover {
     background-color:blue;
 }
+
+
+
+.services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding:100px 40px 40px 40px ;
+            text-align: center;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .service-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+    .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        

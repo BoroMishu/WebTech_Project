@@ -86,51 +86,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
      </nav>
 
-   <form method="post" action="">
-    <label for="spId">Service Provider ID:</label>
-    <input type="text" id="spId" name="spId"><br>
+      <form method="post" action="">
+      <label for="spId">Service Provider ID:</label>
+      <input type="text" id="spId" name="spId"><br>
 
-    <label for="username">User Name:</label>
-    <input type="text" id="username" name="username"><br>
+      <label for="username">User Name:</label>
+      <input type="text" id="username" name="username"><br>
 
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname"><br>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname"><br>
 
-    <label for="gender">Gender:</label>
-    <select name="gender">
+      <label for="gender">Gender:</label>
+       <select name="gender">
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Other">Other</option>
-    </select><br><br>
+       </select><br><br>
 
-    <label for="email">Email Address:</label>
-    <input type="text" id="email" name="email"><br>
+      <label for="email">Email Address:</label>
+      <input type="text" id="email" name="email"><br>
+  
+      <label for="contact">Contact No:</label>
+      <input type="text" id="contact" name="contact"><br>
 
-    <label for="contact">Contact No:</label>
-    <input type="text" id="contact" name="contact"><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br>
+      <label for="managerId">Manager ID:</label>
+      <input type="text" id="managerId" name="managerId"><br>
 
-    <label for="managerId">Manager ID:</label>
-    <input type="text" id="managerId" name="managerId"><br>
+      <label for="userId">Users ID:</label>
+      <input type="text" id="userId" name="userId"><br>
 
-    <label for="userId">Users ID:</label>
-    <input type="text" id="userId" name="userId"><br>
-
-    <button name="add">Add</button>
-    <button name="update">Update</button>
-    <button name="delete">Delete</button>
-</form><br><br><br>
+      <button name="add">Add</button>
+      <button name="update">Update</button>
+      <button name="delete">Delete</button>
+      </form><br><br><br>
 
 
-<?php
-$sql = "SELECT Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No FROM service_provider_table";
-$result = mysqli_query($conn, $sql);
+          <?php
+            $sql = "SELECT Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No FROM service_provider_table";
+            $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    echo "<table border='1' class='event-table' style='width:60%; margin:auto; text-align:center; border-collapse:collapse; font-size:16px;'>";
-    echo "<tr>
+      if (mysqli_num_rows($result) > 0) {
+            echo "<table border='1' class='event-table' style='width:60%; margin:auto; text-align:center; border-collapse:collapse; font-size:16px;'>";
+         echo "<tr>
             <th>ID</th>
             <th>User Name</th>
             <th>Full Name</th>
@@ -138,7 +138,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>Email</th>
             <th>Contact</th>
           </tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
                 <td>{$row['Service_Provider_ID']}</td>
                 <td>{$row['Service_Provider_User_Name']}</td>
@@ -147,11 +147,16 @@ if (mysqli_num_rows($result) > 0) {
                 <td>{$row['Service_Provider_Email_Address']}</td>
                 <td>{$row['Service_Provider_Contact_No']}</td>
               </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "No service providers found.";
-}
+        }
+        echo "</table>";
+       } else {
+          echo "No service providers found.";
+       }
 
-mysqli_close($conn);
-?>
+      mysqli_close($conn);
+       ?>
+    
+    </div>
+
+</body>
+</html>  
