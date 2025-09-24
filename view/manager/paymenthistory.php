@@ -13,6 +13,7 @@ $conn = getConnection();
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/manager.css">
+     <link rel="stylesheet" href="../css/table.css">
     </head>
 
 <body>
@@ -33,7 +34,7 @@ $conn = getConnection();
      </nav>
 
       <?php
-        $sql = "SELECT Customer_ID, Customer_User_Name,Customer_Full_Name, Customer_Email_Address, Customer_Gender,Customer_Contact_No,Customer_Password FROM customer_table";
+        $sql = "SELECT customer_id, customer_username,customer_full_name, customer_email_address, customer_gender,customer_contact_no,customer_password FROM customer_table";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -46,10 +47,10 @@ $conn = getConnection();
                   </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>
-                        <td>{$row['Customer_ID']}</td>
-                        <td>{$row['Customer_Full_Name']}</td>
-                        <td>{$row['Customer_Email_Address']}</td>
-                        <td>{$row['Customer_Contact_No']}</td>
+                        <td>{$row['customer_id']}</td>
+                        <td>{$row['customer_full_name']}</td>
+                        <td>{$row['customer_email_address']}</td>
+                        <td>{$row['customer_contact_no']}</td>
                         
                       </tr>";
             }

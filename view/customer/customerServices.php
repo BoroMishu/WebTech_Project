@@ -5,8 +5,9 @@
 
      <meta charset="utf-8"> 
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
-     <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/customer.css">
+     <link rel="stylesheet" href="../css/external.css">
+     <link rel="stylesheet" href="../css/customer.css">
+     <script src="../js/services.js"></script>
       
     </head>
 
@@ -24,13 +25,13 @@
             <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
-         <button class="appointment-btn">Book Appointment</button>
+         <button class="appointment-btn">Book Event</button>
     </nav>
 
 
-        <!--Services Section -->
+    
     <section class="services-container">
-        <div class="service-card">
+        <div class="service-card" >
             <img src="/event_organizer_and_management_portal/view/images/wedding.jpg" alt="Wedding Event">
             <h3>Wedding Ceremony</h3>
         </div>
@@ -40,15 +41,12 @@
         </div>
         <div class="service-card">
             <img src="/event_organizer_and_management_portal/view/images/awardCeremony.jpg" alt="Award Ceremony">
-            <h3>Corporate Conference</h3>
+            <h3>Award Ceremony</h3>
         </div>
         <div class="service-card">
             <img src="/event_organizer_and_management_portal/view/images/convocation.jpg" alt="Covocation">
-            <h3>Music Concert</h3><br>
+            <h3>Convoction</h3><br>
         </div>
-
-
-
 
        <div class="service-card">
             <img src="/event_organizer_and_management_portal/view/images/conference.jpg" alt="Conference">

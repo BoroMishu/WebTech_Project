@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,13 +6,12 @@
 
      <meta charset="utf-8"> 
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
-     <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/customer.css">
+     <link rel="stylesheet" href="../css/external.css">
+     <link rel="stylesheet" href="../css/customer.css">
       
     </head>
 
- <body>
-         <h1>Welcome, Customer</h1>  
+ <body>  
 
     <nav class ="navbar">
         <label class="logo" style="color:white">EventM</label>
@@ -22,7 +22,7 @@
             <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
-         <button class="appointment-btn">Book Appointment</button>
+         <button class="appointment-btn">Book Event</button>
     </nav>
 
   </body>

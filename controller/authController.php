@@ -48,8 +48,8 @@
              else
             {
                 session_start();
-                $_SESSION["userid"]=$returnedValue["Users_ID"];
-                $_SESSION["role"]=$returnedValue["Users_Role"];
+                $_SESSION["userid"]=$returnedValue["user_id"];
+                $_SESSION["role"]=$returnedValue["role"];
 
                 if($returnedValue["role"]==1)
                 {

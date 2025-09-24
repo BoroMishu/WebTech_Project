@@ -2,7 +2,7 @@
     $host="localhost";
     $user="root";
     $pass="";
-    $db="event_organizer_and_management_portal";
+    $db="event_management_portal";
     $port="3306";
 
   

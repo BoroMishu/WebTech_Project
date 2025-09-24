@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['add'])) {
         if ($spId && $username && $fullname && $gender && $email && $contact && $password && $managerId && $userId) {
             $sql = "INSERT INTO service_provider_table 
-                    (Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No, Service_Provider_Password, Manager_ID, Users_ID) 
+                    (service_provider_id, service_provider_username, service_provider_name,service_provider_gender, service_provider_email, service_provider_contact_no, service_provider_password, manager_id, user_id) 
                     VALUES ('$spId', '$username', '$fullname', '$gender', '$email', '$contact', '$password', '$managerId', '$userId')";
             if (!mysqli_query($conn, $sql)) {
                 echo "Add Error: " . mysqli_error($conn);
@@ -32,15 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // UPDATE
     if (isset($_POST['update'])) {
         $sql = "UPDATE service_provider_table SET 
-                Service_Provider_User_Name='$username', 
-                Service_Provider_Full_Name='$fullname', 
-                Service_Provider_Gender='$gender', 
-                Service_Provider_Email_Address='$email', 
-                Service_Provider_Contact_No='$contact', 
-                Service_Provider_Password='$password', 
-                Manager_ID='$managerId', 
-                Users_ID='$userId' 
-                WHERE Service_Provider_ID='$spId'";
+                service_provider_username='$username', 
+                service_provider_name='$fullname', 
+                service_provider_gender='$gender', 
+                service_provider_email='$email', 
+                service_provider_contact_no='$contact', 
+                service_provider_password='$password', 
+                manager_id='$managerId', 
+                user_id='$userId' 
+                WHERE service_provider_id='$spId'";
         if (!mysqli_query($conn, $sql)) {
             echo "Update Error: " . mysqli_error($conn);
         }
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // DELETE
     if (isset($_POST['delete'])) {
-        $sql = "DELETE FROM service_provider_table WHERE Service_Provider_ID='$spId'";
+        $sql = "DELETE FROM service_provider_table WHERE service_provider_id='$spId'";
         if (!mysqli_query($conn, $sql)) {
             echo "Delete Error: " . mysqli_error($conn);
         }
@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/manager.css">
+     <link rel="stylesheet" href="../css/table.css">
     </head>
 
 <body>
@@ -125,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
           <?php
-            $sql = "SELECT Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No FROM service_provider_table";
+            $sql = "SELECT service_provider_id, service_provider_username, service_provider_name, service_provider_gender, service_provider_email, service_provider_contact_no FROM service_provider_table";
             $result = mysqli_query($conn, $sql);
 
       if (mysqli_num_rows($result) > 0) {
@@ -140,12 +141,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </tr>";
         while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
-                <td>{$row['Service_Provider_ID']}</td>
-                <td>{$row['Service_Provider_User_Name']}</td>
-                <td>{$row['Service_Provider_Full_Name']}</td>
-                <td>{$row['Service_Provider_Gender']}</td>
-                <td>{$row['Service_Provider_Email_Address']}</td>
-                <td>{$row['Service_Provider_Contact_No']}</td>
+                <td>{$row['service_provider_id']}</td>
+                <td>{$row['service_provider_username']}</td>
+                <td>{$row['service_provider_name']}</td>
+                <td>{$row['service_provider_gender']}</td>
+                <td>{$row['service_provider_email']}</td>
+                <td>{$row['service_provider_contact_no']}</td>
               </tr>";
         }
         echo "</table>";
