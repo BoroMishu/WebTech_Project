@@ -23,7 +23,7 @@
             <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
-         <button class="appointment-btn">Book Event</button>
+         
     </nav>
 
   </body>

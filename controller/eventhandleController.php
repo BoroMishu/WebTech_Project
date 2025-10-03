@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         deleteEvent($eventId);
     }
 
-    // Redirect back to view after handling
+    
     header("Location: ../view/eventhandle.php");
     exit;
 }

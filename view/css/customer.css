@@ -46,26 +46,6 @@ nav .logo {
     background-color: rgb(69, 66, 66);
 }
 
-
-.appointment-btn {
-    background-color:red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 15px;
-    margin-left:auto;
-}
-
-.appointment-btn:hover {
-    background-color:blue;
-}
-
-
-
 .services-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
