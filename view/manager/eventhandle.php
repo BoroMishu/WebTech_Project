@@ -17,7 +17,7 @@ $conn = getConnection();
     // ADD
     if (isset($_POST['add'])) {
     if ($eventId && $eventType && $status && $price && $managerId) {
-        $sql = "INSERT INTO event_table (Event_ID, Event_type, Event_Status, Event_Price, Manager_ID) 
+        $sql = "INSERT INTO event_table (event_id, event_type, event_status, event_price, manager_id) 
                 VALUES ('$eventId', '$eventType', '$status', '$price', '$managerId')";
         if (!mysqli_query($conn, $sql)) {
             echo "Add Error: " . mysqli_error($conn);
@@ -30,7 +30,7 @@ $conn = getConnection();
 
     // UPDATE
     if (isset($_POST['update'])) {
-        $sql = "UPDATE event_table SET Event_type='$eventType', Event_Status='$status', Event_Price='$price', Manager_ID='$managerId' WHERE Event_ID='$eventId'";
+        $sql = "UPDATE event_table SET event_type='$eventType', event_status='$status', event_price='$price', manager_id='$managerId' WHERE event_id='$eventId'";
 
         if (!mysqli_query($conn, $sql)) {
             echo "Update Error: " . mysqli_error($conn);
@@ -39,7 +39,7 @@ $conn = getConnection();
 
     // DELETE
     if (isset($_POST['delete'])) {
-        $sql = "DELETE FROM event_table WHERE Event_ID='$eventId'";
+        $sql = "DELETE FROM event_table WHERE event_id='$eventId'";
         if (!mysqli_query($conn, $sql)) {
             echo "Delete Error: " . mysqli_error($conn);
         }
@@ -59,6 +59,7 @@ $conn = getConnection();
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/manager.css">
+     <link rel="stylesheet" href="../css/table.css">
     </head>
 
 <body>
@@ -108,7 +109,7 @@ $conn = getConnection();
      
 
 <?php
-         $sql = "SELECT Event_ID, Event_type, Event_Status, Event_Price FROM event_table";
+         $sql = "SELECT event_id, event_type, event_status, event_price FROM event_table";
          $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -116,10 +117,10 @@ $conn = getConnection();
       echo "<tr><th>Event ID</th><th>Event Type</th><th>Status</th><th>Price</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
-                <td>" . ($row['Event_ID']) . "</td>
-                <td>" . ($row['Event_type']) . "</td>
-                <td>" . ($row['Event_Status']) . "</td>
-                <td>" . ($row['Event_Price']) . "</td>
+                <td>" . ($row['event_id']) . "</td>
+                <td>" . ($row['event_type']) . "</td>
+                <td>" . ($row['event_status']) . "</td>
+                <td>" . ($row['event_price']) . "</td>
               </tr>";
     }
     echo "</table>";

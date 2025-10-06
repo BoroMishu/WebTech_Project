@@ -55,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["submit"]))
 
             if($returnedValue["role_id"] ==1)
             {
+<<<<<<< HEAD
                 header("Location:/webTech_project/view/manager/manager.php");
                 exit();
             }
@@ -67,6 +68,28 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["submit"]))
             {
                 header("Location:/webTech_project/view/customer/customer.php");
                 exit();
+=======
+                session_start();
+                $_SESSION["userid"]=$returnedValue["user_id"];
+                $_SESSION["role"]=$returnedValue["role"];
+
+                if($returnedValue["role"]==1)
+                {
+                    
+                    header("location:../view/manager/manager.php");
+                }
+
+                elseif($returnedValue["role"]==2)
+                {
+                    header("location:../view/serviceprovider/serviceprovider.php");
+                }
+
+                else
+                {
+                    header("location:../view/customer/customer.php");
+                }
+                
+>>>>>>> 5ad9c817df71af0b1a8c7b23159c6600e545abd2
             }
         }
         var_dump($returnedValue);

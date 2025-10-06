@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['add'])) {
         if ($spId && $username && $fullname && $gender && $email && $contact && $password && $managerId && $userId) {
             $sql = "INSERT INTO service_provider_table 
-                    (Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No, Service_Provider_Password, Manager_ID, Users_ID) 
+                    (service_provider_id, service_provider_username, service_provider_name,service_provider_gender, service_provider_email, service_provider_contact_no, service_provider_password, manager_id, user_id) 
                     VALUES ('$spId', '$username', '$fullname', '$gender', '$email', '$contact', '$password', '$managerId', '$userId')";
             if (!mysqli_query($conn, $sql)) {
                 echo "Add Error: " . mysqli_error($conn);
@@ -32,15 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // UPDATE
     if (isset($_POST['update'])) {
         $sql = "UPDATE service_provider_table SET 
-                Service_Provider_User_Name='$username', 
-                Service_Provider_Full_Name='$fullname', 
-                Service_Provider_Gender='$gender', 
-                Service_Provider_Email_Address='$email', 
-                Service_Provider_Contact_No='$contact', 
-                Service_Provider_Password='$password', 
-                Manager_ID='$managerId', 
-                Users_ID='$userId' 
-                WHERE Service_Provider_ID='$spId'";
+                service_provider_username='$username', 
+                service_provider_name='$fullname', 
+                service_provider_gender='$gender', 
+                service_provider_email='$email', 
+                service_provider_contact_no='$contact', 
+                service_provider_password='$password', 
+                manager_id='$managerId', 
+                user_id='$userId' 
+                WHERE service_provider_id='$spId'";
         if (!mysqli_query($conn, $sql)) {
             echo "Update Error: " . mysqli_error($conn);
         }
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // DELETE
     if (isset($_POST['delete'])) {
-        $sql = "DELETE FROM service_provider_table WHERE Service_Provider_ID='$spId'";
+        $sql = "DELETE FROM service_provider_table WHERE service_provider_id='$spId'";
         if (!mysqli_query($conn, $sql)) {
             echo "Delete Error: " . mysqli_error($conn);
         }
@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
      <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/manager.css">
+     <link rel="stylesheet" href="../css/table.css">
     </head>
 
 <body>
@@ -86,51 +87,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
      </nav>
 
-   <form method="post" action="">
-    <label for="spId">Service Provider ID:</label>
-    <input type="text" id="spId" name="spId"><br>
+      <form method="post" action="">
+      <label for="spId">Service Provider ID:</label>
+      <input type="text" id="spId" name="spId"><br>
 
-    <label for="username">User Name:</label>
-    <input type="text" id="username" name="username"><br>
+      <label for="username">User Name:</label>
+      <input type="text" id="username" name="username"><br>
 
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname"><br>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname"><br>
 
-    <label for="gender">Gender:</label>
-    <select name="gender">
+      <label for="gender">Gender:</label>
+       <select name="gender">
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Other">Other</option>
-    </select><br><br>
+       </select><br><br>
 
-    <label for="email">Email Address:</label>
-    <input type="text" id="email" name="email"><br>
+      <label for="email">Email Address:</label>
+      <input type="text" id="email" name="email"><br>
+  
+      <label for="contact">Contact No:</label>
+      <input type="text" id="contact" name="contact"><br>
 
-    <label for="contact">Contact No:</label>
-    <input type="text" id="contact" name="contact"><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br>
+      <label for="managerId">Manager ID:</label>
+      <input type="text" id="managerId" name="managerId"><br>
 
-    <label for="managerId">Manager ID:</label>
-    <input type="text" id="managerId" name="managerId"><br>
+      <label for="userId">Users ID:</label>
+      <input type="text" id="userId" name="userId"><br>
 
-    <label for="userId">Users ID:</label>
-    <input type="text" id="userId" name="userId"><br>
-
-    <button name="add">Add</button>
-    <button name="update">Update</button>
-    <button name="delete">Delete</button>
-</form><br><br><br>
+      <button name="add">Add</button>
+      <button name="update">Update</button>
+      <button name="delete">Delete</button>
+      </form><br><br><br>
 
 
-<?php
-$sql = "SELECT Service_Provider_ID, Service_Provider_User_Name, Service_Provider_Full_Name, Service_Provider_Gender, Service_Provider_Email_Address, Service_Provider_Contact_No FROM service_provider_table";
-$result = mysqli_query($conn, $sql);
+          <?php
+            $sql = "SELECT service_provider_id, service_provider_username, service_provider_name, service_provider_gender, service_provider_email, service_provider_contact_no FROM service_provider_table";
+            $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    echo "<table border='1' class='event-table' style='width:60%; margin:auto; text-align:center; border-collapse:collapse; font-size:16px;'>";
-    echo "<tr>
+      if (mysqli_num_rows($result) > 0) {
+            echo "<table border='1' class='event-table' style='width:60%; margin:auto; text-align:center; border-collapse:collapse; font-size:16px;'>";
+         echo "<tr>
             <th>ID</th>
             <th>User Name</th>
             <th>Full Name</th>
@@ -138,20 +139,25 @@ if (mysqli_num_rows($result) > 0) {
             <th>Email</th>
             <th>Contact</th>
           </tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
-                <td>{$row['Service_Provider_ID']}</td>
-                <td>{$row['Service_Provider_User_Name']}</td>
-                <td>{$row['Service_Provider_Full_Name']}</td>
-                <td>{$row['Service_Provider_Gender']}</td>
-                <td>{$row['Service_Provider_Email_Address']}</td>
-                <td>{$row['Service_Provider_Contact_No']}</td>
+                <td>{$row['service_provider_id']}</td>
+                <td>{$row['service_provider_username']}</td>
+                <td>{$row['service_provider_name']}</td>
+                <td>{$row['service_provider_gender']}</td>
+                <td>{$row['service_provider_email']}</td>
+                <td>{$row['service_provider_contact_no']}</td>
               </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "No service providers found.";
-}
+        }
+        echo "</table>";
+       } else {
+          echo "No service providers found.";
+       }
 
-mysqli_close($conn);
-?>
+      mysqli_close($conn);
+       ?>
+    
+    </div>
+
+</body>
+</html>  

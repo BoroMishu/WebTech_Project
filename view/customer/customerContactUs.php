@@ -1,24 +1,3 @@
-<?php
-session_start();
-    if(isset($_SESSION["username"]))
-    {
-        if($_SESSION["role"]==3)
-        {
-            
-        }
-
-        else
-        {
-            header("Location:../login.php");
-        }
-    }
-    else
-    {
-        header("Location:../login.php");
-    }
-
-?>
-
 
 <!DOCTYPE html>
 <html>
@@ -32,8 +11,7 @@ session_start();
       
     </head>
 
- <body>
- 
+ <body>  
 
     <nav class ="navbar">
         <label class="logo" style="color:white">EventM</label>

@@ -1,25 +1,3 @@
-<?php
-session_start();
-    if(isset($_SESSION["username"]))
-    {
-        if($_SESSION["role"]==3)
-        {
-            
-        }
-
-        else
-        {
-            header("Location:../login.php");
-        }
-    }
-    else
-    {
-        header("Location:../login.php");
-    }
-
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,6 +7,7 @@ session_start();
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="../css/external.css">
      <link rel="stylesheet" href="../css/customer.css">
+     
       
     </head>
 
