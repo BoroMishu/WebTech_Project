@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
 
+
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +10,10 @@
 }
 
 .container {
-    margin: 0 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -33,7 +38,7 @@ h2
     color:black;
     
 }
-#input{
+.input{
     width:100%;
     padding:12px;
     max-width: auto;
@@ -79,6 +84,23 @@ h2
 }
 checkbox{
     margin: 10px;
+}
+#newpass-box{
+    display:none;
+}
+
+.radio {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+
+.radio:hover {
+  color: #007BFF;
 }
 
 

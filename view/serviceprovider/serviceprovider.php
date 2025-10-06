@@ -1,6 +1,6 @@
 <?php
 session_start();
-    if(isset($_SESSION["userid"]))
+    if(isset($_SESSION["username"]))
     {
         if($_SESSION["role"]==2)
         {
@@ -27,3 +27,14 @@ session_start();
     echo "<a href='../logout.php'>logout</a>";
 
 ?>
+
+<doctype html>
+    <html>
+        <head>
+            <title>Service Provider</title>
+        </head>
+
+        <body>
+            <h3>Service Provider Page</h3>
+        </body>
+    </html>

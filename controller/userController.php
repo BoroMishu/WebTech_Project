@@ -1,9 +1,9 @@
 <?php
     require_once("../model/userModel.php");
 
-    function validateUser($id, $pass)
+    function validateUser($name, $pass)
     {
-        return validateUsers($id, $pass);
+        return validateUsers($name, $pass);
     }
 
 ?>

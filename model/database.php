@@ -1,21 +1,20 @@
 <?php
-    $host="localhost";
+    $host="127.0.0.1";
+    $dbname="event_management_portal";
     $user="root";
     $pass="";
-    $db="event_organizer_and_management_portal";
-    $port="3306";
+    $port="4306";
 
-  
 
     function getConnection()
     {
         global $host;
         global $user;
         global $pass;
-        global $db;
+        global $dbname;
         global $port;
 
-        $conn=mysqli_connect($host,$user,"",$db,$port);
+        $conn=mysqli_connect($host,$user,$pass,$dbname,$port);
         return $conn;
     }
 
