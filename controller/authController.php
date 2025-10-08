@@ -1,52 +1,74 @@
 <?php
-    require_once("userController.php");
-    $IdErr="";
-    $passErr="";
-    $hasErr=false;
+session_start();
+require_once("userController.php");
 
-    $userid="";
-    $password="";
+$usernameErr = "";
+$passErr = "";
+$hasErr = false;
+$username = "";
+$password = "";
 
-    if(($_SERVER["REQUEST_METHOD"]=="POST") && isset($_POST["submit"]))
+if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["submit"]))
     {
-        if(empty($_POST["userid"]))
+        if (empty(trim($_POST["username"])))
         {
-            $IdErr="User id cannot be empty";
+            $usernameErr= "User name cannot be empty";
             $hasErr=true;
-
         }
         else
         {
-            $userid=$_POST["userid"];
+            $username= ($_POST["username"]);
         }
 
-        if(empty($_POST["password"]))
+        if (empty(trim($_POST["password"])))
         {
-            $passErr="password cannot be empty";
+            $passErr= "Password cannot be empty";
             $hasErr=true;
-
         }
-
         else
         {
-            $password=$_POST["password"];
+            $password= ($_POST["password"]);
         }
 
-        if($hasErr)
+        if ($hasErr)
         {
-            header("Location:../view/login.php?idErr=$IdErr&passErr=$passErr");
+            header("Location:/webTech_project/view/login.php?usernameErr=$usernameErr&passErr=$passErr");
+            exit();
+        } 
+
+        $returnedValue=validateUser($username, $password);
+        if(!$returnedValue)
+        {
+            header("Location:/webTech_project/view/login.php?invalidUser=Invalid+User");
+            exit();
         }
-       
         else
         {
-            $returnedValue=validateUser($userid, $password);
-            if(!$returnedValue)
+            $_SESSION["username"]=$returnedValue["username"];
+            $_SESSION["role"]=$returnedValue["role_id"];
+            
+            if(isset($_POST["remeber"]))
             {
-                header("Location:../view/login.php?invalidUser='Invalid User.'");
+                setcookie("username", $returnedValue["username"], time() + (86400 * 7), "/");
+                setcookie("role", $returnedValue["role_id"], time() + (86400 * 7), "/");
             }
 
-             else
+            if($returnedValue["role_id"] ==1)
             {
+<<<<<<< HEAD
+                header("Location:/webTech_project/view/manager/manager.php");
+                exit();
+            }
+            elseif($returnedValue["role_id"] ==2)
+            {
+                header("Location:/webTech_project/view/serviceprovider/serviceprovider.php");
+                exit();
+            }
+            else
+            {
+                header("Location:/webTech_project/view/customer/customer.php");
+                exit();
+=======
                 session_start();
                 $_SESSION["userid"]=$returnedValue["user_id"];
                 $_SESSION["role"]=$returnedValue["role"];
@@ -67,9 +89,14 @@
                     header("location:../view/customer/customer.php");
                 }
                 
+>>>>>>> 5ad9c817df71af0b1a8c7b23159c6600e545abd2
             }
         }
+        var_dump($returnedValue);
+        exit();
     }
+
+
 
 
 ?>
