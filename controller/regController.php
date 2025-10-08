@@ -1,6 +1,7 @@
 <?php
 require_once("../model/newuserModel.php");
 
+
 $fullnameErr="";
 $usernameErr="";
 $emailErr="";   
@@ -116,14 +117,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
         $user_id=3;
         $result=addNewCustomer($user_id, $username, $fullname, $email, $npassword, $gender, $contactno);
         if($result)
-        {   
-            header("Location: /webTech_project/view/login.php?success1");
+        {   $_SESSION['success']="Registration Successful! Please Login.";
+            header("Location: /event_organizer_and_management_portal/view/login.php?success1");
+
             exit();
         }
         else
         {
-            echo "Error while registering";
+            $_SESSION['error'] = "Registration failed. Please try again.";
+            header("Location: /event_organizer_and_management_portal/view/login.php?success1");
+
+            exit();
         }
+        
     
     }
 

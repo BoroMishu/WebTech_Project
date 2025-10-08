@@ -29,22 +29,8 @@ session_start();
         
     </head>
     <body>
-        <div class="dashboard-container">
+        <h1>Service Provider Dashboard</h1>
+        
 
-     <nav class="sidebar-nav">
-            <div class="logo">EventM</div> 
-            <h2 style="color:white">Welcome,Manager</h2> 
-        <ul>
-         
-           <li><a href="manager.php">Dashboard</a></li>
-           <li><a href="eventhandle.php">Events Handle</a></li>
-           <li><a href="manageSp.php">Manage ServiceProvider</a></li>
-           <li><a href="paymenthistory.php">Payment History</a></li>
-           <li class="logout-item"><a href="../logout.php">Logout</a></li>
-        </ul>
-           
-     </nav>
-    
-     </div>
     </body>
 </html>
