@@ -3,12 +3,7 @@
     $dbname="event_management_portal";
     $user="root";
     $pass="";
-<<<<<<< HEAD
-    $port="4306";
-=======
-    $db="event_management_portal";
     $port="3306";
->>>>>>> 5ad9c817df71af0b1a8c7b23159c6600e545abd2
 
 
     function getConnection()

@@ -32,71 +32,47 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["submit"]))
 
         if ($hasErr)
         {
-            header("Location:/webTech_project/view/login.php?usernameErr=$usernameErr&passErr=$passErr");
-            exit();
+            header("Location:/event_organizer_and_management_portal/view/login.php?usernameErr=$usernameErr&passErr=$passErr");
+            
         } 
 
         $returnedValue=validateUser($username, $password);
         if(!$returnedValue)
         {
-            header("Location:/webTech_project/view/login.php?invalidUser=Invalid+User");
-            exit();
+            header("Location:/event_organizer_and_management_portal/view/login.php?invalidUser=Invalid+User");
+            
         }
         else
         {
             $_SESSION["username"]=$returnedValue["username"];
-            $_SESSION["role"]=$returnedValue["role_id"];
+            $_SESSION["role"]=$returnedValue["role"];
             
-            if(isset($_POST["remeber"]))
+            if(isset($_POST["remember"]))
             {
                 setcookie("username", $returnedValue["username"], time() + (86400 * 7), "/");
-                setcookie("role", $returnedValue["role_id"], time() + (86400 * 7), "/");
+                setcookie("role", $returnedValue["role"], time() + (86400 * 7), "/");
             }
+            
+            
 
-            if($returnedValue["role_id"] ==1)
+            if($returnedValue["role"] ==1)
             {
-<<<<<<< HEAD
-                header("Location:/webTech_project/view/manager/manager.php");
-                exit();
+                header("Location:/event_organizer_and_management_portal/view/manager/manager.php");
+                
             }
-            elseif($returnedValue["role_id"] ==2)
+            elseif($returnedValue["role"] ==2)
             {
-                header("Location:/webTech_project/view/serviceprovider/serviceprovider.php");
-                exit();
+                header("Location:/event_organizer_and_management_portal/view/serviceprovider/serviceprovider.php");
+                
             }
             else
             {
-                header("Location:/webTech_project/view/customer/customer.php");
-                exit();
-=======
-                session_start();
-                $_SESSION["userid"]=$returnedValue["user_id"];
-                $_SESSION["role"]=$returnedValue["role"];
-
-                if($returnedValue["role"]==1)
-                {
-                    
-                    header("location:../view/manager/manager.php");
-                }
-
-                elseif($returnedValue["role"]==2)
-                {
-                    header("location:../view/serviceprovider/serviceprovider.php");
-                }
-
-                else
-                {
-                    header("location:../view/customer/customer.php");
-                }
+                header("Location:/event_organizer_and_management_portal/view/customer/customer.php");
                 
->>>>>>> 5ad9c817df71af0b1a8c7b23159c6600e545abd2
             }
+            var_dump($returnedValue);
         }
-        var_dump($returnedValue);
-        exit();
+        
     }
-
-
-
 
 ?>
