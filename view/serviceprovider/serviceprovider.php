@@ -29,6 +29,7 @@ session_start();
         
     </head>
     <body>
+        <h1>Service Provider Dashboard</h1>
         <div class="dashboard-container">
 
      <nav class="sidebar-nav">
@@ -46,5 +47,6 @@ session_start();
      </nav>
     
      </div>
+
     </body>
 </html>
