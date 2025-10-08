@@ -25,12 +25,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 </head>
 
 <body>
+
+      <!-- Back Button -->
+    <div>
+    <button type="button" name="button"style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;"
+        onclick="window.location.href='customerServices.php'">Back</button>
+  </div>
+    
     <h1 style="text-align:center;">Wedding Events</h1>
 
+    <!-- For show message -->
     <?php if (!empty($message)): ?>
         <p style="text-align:center; color:red; font-weight:bold;"><?= $message ?></p>
     <?php endif; ?>
 
+    <!-- event table show -->
     <?php if (!empty($events)): ?>
         <table class="event-table">
             <tr>
@@ -48,13 +57,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 </tr>
             <?php endforeach; ?>
         </table>
+
     <?php else: ?>
         <p style="text-align:center;">No wedding events found.</p>
     <?php endif; ?><br><br>
 
+     <!-- booking form -->
     <div class="form-container" style="text-align:center;">
         <form action="" method="post">
-            <label for="customer_name">Your Name:</label><br>
+            <label for="customer_name">Your User Name:</label><br>
             <input type="text" id="customer_name" name="customer_name" required><br><br>
 
             <label for="customer_email">Your Email:</label><br>
@@ -66,8 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <button type="submit" name="submit" 
                 style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
                 Confirm Booking
-            </button>
+            </button>   
+
         </form>
     </div>
+
+    
 </body>
 </html>

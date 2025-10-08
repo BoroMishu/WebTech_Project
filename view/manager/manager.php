@@ -49,7 +49,7 @@ session_start();
            <li><a href="manager.php">Dashboard</a></li>
            <li><a href="eventhandle.php">Events Handle</a></li>
            <li><a href="manageSp.php">Manage ServiceProvider</a></li>
-           <li><a href="paymenthistory.php">Payment History</a></li>
+           <li><a href="Bookinghistory.php">Booking History</a></li>
            <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
            
