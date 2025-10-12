@@ -1,54 +1,45 @@
- <?php 
-  
-  //save booking
+<?php
+require_once 'C:/xampp/htdocs/event_organizer_and_management_portal/model/database.php';
 
-function saveBooking($customer_name, $customer_email, $event_id) {
+function getCustomerId($customer_name, $customer_email) {
     $conn = getConnection();
-
-    // Check if customer  exists
     $sql = "SELECT customer_id FROM customer_table 
-            WHERE customer_email_address = '$customer_email' 
-            AND customer_username = '$customer_name'";
+            WHERE customer_username = '$customer_name' 
+            AND customer_email_address = '$customer_email'";
     $result = mysqli_query($conn, $sql);
 
-    if (!$result || mysqli_num_rows($result) == 0) {
-        mysqli_close($conn);
-        return ["message" => " Customer not found. Please check your name or email."];
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['customer_id'];
     }
+    return null;
+}
 
-    $row = mysqli_fetch_assoc($result);
-    $customer_id = $row['customer_id'];
+function getEventById($event_id) {
+    $conn = getConnection();
+    $sql = "SELECT event_id, event_status FROM event_table WHERE event_id = '$event_id'";
+    $result = mysqli_query($conn, $sql);
 
-    // Check if event exists
-    $checkEvent = "SELECT event_id , event_status FROM event_table WHERE event_id = '$event_id' ";
-    $eventResult = mysqli_query($conn, $checkEvent);
-
-    if (!$eventResult || mysqli_num_rows($eventResult) == 0) {
-        mysqli_close($conn);
-        return ["message" => "Invalid Event ID. Please select a valid event."];
+    if ($result && mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result);
     }
-     $event = mysqli_fetch_assoc($eventResult);
-     
-    //check event status
-    if ($event['event_status'] !== 'available') {
-        mysqli_close($conn);
-        return ["message" => " Sorry, this event is already booked and not available."];
-    }
+    return null;
+}
 
-
-    // Insert booking record
-    $insertBooking = "INSERT INTO booking_table (customer_id, event_id,booking_date) 
-                      VALUES ('$customer_id', '$event_id',CURDATE())";
-
-    if (mysqli_query($conn, $insertBooking)) {
-        $updateStatus = "UPDATE event_table SET event_status = 'booked' WHERE event_id = '$event_id'";
-        mysqli_query($conn, $updateStatus);
-        $message = "Booking confirmed successfully!";
-    } else {
-        $message = " Error inserting booking: " . mysqli_error($conn);
-    }
-
+function insertBooking($customer_id, $event_id) {
+    $conn = getConnection();
+    $sql = "INSERT INTO booking_table (customer_id, event_id, booking_date)
+            VALUES ('$customer_id', '$event_id', CURDATE())";
+    $res = mysqli_query($conn, $sql);
     mysqli_close($conn);
-    return ["message" => $message];
+    return $res;
+}
+
+function updateEventStatus($event_id, $status) {
+    $conn = getConnection();
+    $sql = "UPDATE event_table SET event_status = '$status' WHERE event_id = '$event_id'";
+    $res = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $res;
 }
 ?>

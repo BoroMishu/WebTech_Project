@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $customer_email = $_POST['customer_email'];
     $event_id       = $_POST['event_id'];
 
-    $result  = processBooking($customer_name, $customer_email, $event_id);
-    $message = $result['message'];
+    $message = processBooking($customer_name, $customer_email, $event_id);
+
 }
 ?>
 

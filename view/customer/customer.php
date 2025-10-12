@@ -41,11 +41,10 @@ session_start();
             <li><a href="customer.php">Home</a></li>
             <li><a href="customerServices.php">Sevices</a></li>
             <li><a href="customerCancelBooking.php">Cancel Booking</a></li>
-            <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
          
-    </nav>
-
+    </nav><br><br><br><br><br><br><br><br>
+          <h1  style="text-align:center;"> Welcome to our website</h1>
   </body>
 </html>

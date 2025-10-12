@@ -1,5 +1,7 @@
 <?php
 include 'C:/xampp/htdocs/event_organizer_and_management_portal/model/database.php';
+include 'C:/xampp/htdocs/event_organizer_and_management_portal/controller/bookingController.php';
+include 'C:/xampp/htdocs/event_organizer_and_management_portal/controller/bookingCancelController.php';
 
 function getAwardEvents() {
     $conn = getConnection();

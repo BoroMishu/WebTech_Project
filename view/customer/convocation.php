@@ -1,6 +1,16 @@
 <?php
 include 'C:/xampp/htdocs/event_organizer_and_management_portal/controller/convocationController.php';
 $events = showConvocationEvents();
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $customer_name  = $_POST['customer_name'];
+    $customer_email = $_POST['customer_email'];
+    $event_id       = $_POST['event_id'];
+
+    $message = processBooking($customer_name, $customer_email, $event_id);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +24,22 @@ $events = showConvocationEvents();
 </head>
 
 <body>
+
+
+      <!-- Back Button -->
+     <div>
+      <button type="button" name="button" class="backButton"
+        onclick="window.location.href='customerServices.php'">Back</button>
+    </div>
+
     <h1 style="text-align:center;">Convocation Events</h1>
 
+    <!-- For show message -->
+    <?php if (!empty($message)): ?>
+        <p style="text-align:center; color:red; font-weight:bold;"><?= $message ?></p>
+    <?php endif; ?>
+
+ <!-- event table show -->
     <?php if (!empty($events)): ?>
         <table class="event-table">
             <tr>
@@ -36,5 +60,21 @@ $events = showConvocationEvents();
     <?php else: ?>
         <p style="text-align:center;">No convocation events found.</p>
     <?php endif; ?>
+<!-- booking form -->
+    <div class="form-container" style="text-align:center;">
+        <form action="" method="post">
+            <label for="customer_name">Your User Name:</label><br>
+            <input type="text" id="customer_name" name="customer_name" required><br><br>
+
+            <label for="customer_email">Your Email:</label><br>
+            <input type="email" id="customer_email" name="customer_email" required><br><br>
+
+            <label for="event_id">Select Event ID:</label><br>
+            <input type="text" id="event_id" name="event_id" required><br><br>
+
+            <button type="submit" name="submit" class="confirmbutton"> Confirm Booking</button>  
+        </form>
+    </div>
+
 </body>
 </html>

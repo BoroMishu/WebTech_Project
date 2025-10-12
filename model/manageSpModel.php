@@ -1,7 +1,7 @@
 <?php
 include 'C:/xampp/htdocs/event_organizer_and_management_portal/model/database.php';
 
-// Get all service providers
+// Get all sp
 function getAllServiceProviders() {
     $conn = getConnection();
     $sql = "SELECT service_provider_id, service_provider_username, service_provider_name, service_provider_gender, service_provider_email, service_provider_contact_no FROM service_provider_table";
@@ -10,7 +10,7 @@ function getAllServiceProviders() {
     return $result;
 }
 
-// Add new service provider
+// Add new sp
 function addServiceProvider($spId, $username, $fullname, $gender, $email, $contact, $password, $managerId, $userId) {
     $conn = getConnection();
     $sql = "INSERT INTO service_provider_table 
@@ -24,7 +24,7 @@ function addServiceProvider($spId, $username, $fullname, $gender, $email, $conta
     return true;
 }
 
-// Update service provider
+// Update sp
 function updateServiceProvider($spId, $username, $fullname, $gender, $email, $contact, $password, $managerId, $userId) {
     $conn = getConnection();
     $sql = "UPDATE service_provider_table SET 
@@ -45,7 +45,7 @@ function updateServiceProvider($spId, $username, $fullname, $gender, $email, $co
     return true;
 }
 
-// Delete service provider
+// Delete sp
 function deleteServiceProvider($spId) {
     $conn = getConnection();
     $sql = "DELETE FROM service_provider_table WHERE service_provider_id='$spId'";

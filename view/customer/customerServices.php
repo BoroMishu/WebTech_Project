@@ -22,7 +22,6 @@
             <li><a href="customer.php">Home</a></li>
             <li><a href="customerServices.php">Sevices</a></li>
             <li><a href="customerCancelBooking.php">Cancel Booking</a></li>
-            <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>
         
@@ -53,15 +52,7 @@
             <h3>Corporate Conference</h3>
         </div>
 
-        <div class="service-card">
-            <img src="/event_organizer_and_management_portal/view/images/musicConcert.jpg" alt="Concert">
-            <h3>Music Concert</h3>
-        </div>
 
-        <div class="service-card">
-            <img src="/event_organizer_and_management_portal/view/images/festival.jpg" alt="Festival">
-            <h3>Festival Celebration</h3>
-        </div>
 
     </section>
 

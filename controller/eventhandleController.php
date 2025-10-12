@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $price = $_POST['price'] ?? '';
     $managerId = $_POST['managerId'] ?? '';
 
-    // ADD
+    // Add
     if (isset($_POST['add'])) {
         if ($eventId && $eventType && $status && $price && $managerId) {
             $result = addEvent($eventId, $eventType, $status, $price, $managerId);
@@ -20,13 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // UPDATE
+    // update
     if (isset($_POST['update'])) {
         $result = updateEvent($eventId, $eventType, $status, $price, $managerId);
         $message = ($result === true) ? "Event updated successfully." : $result;
     }
 
-    // DELETE
+    // delete
     if (isset($_POST['delete'])) {
         $result = deleteEvent($eventId);
         $message = ($result === true) ? "Event deleted successfully." : $result;
