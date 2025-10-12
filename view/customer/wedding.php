@@ -1,6 +1,5 @@
 <?php
-require_once ('C:/xampp/htdocs/event_organizer_and_management_portal/controller/weddingController.php');
-
+include ('C:/xampp/htdocs/event_organizer_and_management_portal/controller/weddingController.php');
 $events = showWeddingEvents();
 $message = "";
 
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
       <!-- Back Button -->
     <div>
-    <button type="button" name="button"style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;"
+    <button type="button" name="button" class="backButton"
         onclick="window.location.href='customerServices.php'">Back</button>
   </div>
     
@@ -74,10 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <label for="event_id">Select Event ID:</label><br>
             <input type="text" id="event_id" name="event_id" required><br><br>
 
-            <button type="submit" name="submit" 
-                style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
-                Confirm Booking
-            </button>   
+            <button type="submit" name="submit" class="confirmbutton"> Confirm Booking</button>   
 
         </form>
     </div>

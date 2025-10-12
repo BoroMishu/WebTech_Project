@@ -21,7 +21,7 @@
         <ul>
             <li><a href="customer.php">Home</a></li>
             <li><a href="customerServices.php">Sevices</a></li>
-            <li><a href="customerAboutUS.php">About Us</a></li>
+            <li><a href="customerCancelBooking.php">Cancel Booking</a></li>
             <li><a href="customerContactUs.php">Contact Us</a></li>
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
         </ul>

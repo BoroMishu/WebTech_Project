@@ -5,9 +5,4 @@ function showWeddingEvents() {
     return getWeddingEvents(); 
 }
 
-function processBooking($customer_name, $customer_email, $event_id) {
-    return saveBooking($customer_name, $customer_email, $event_id);
-}
-
-
 ?>
