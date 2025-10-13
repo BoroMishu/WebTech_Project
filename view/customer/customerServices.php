@@ -51,9 +51,6 @@
             <img src="/event_organizer_and_management_portal/view/images/conference.jpg" alt="Conference">
             <h3>Corporate Conference</h3>
         </div>
-
-
-
     </section>
 
 

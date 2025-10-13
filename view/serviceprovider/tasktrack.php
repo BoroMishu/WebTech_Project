@@ -1,29 +1,4 @@
-<?php
 
-session_start();
-    if(isset($_SESSION["username"]))
-    {
-        if($_SESSION["role"]==2)
-        {
-            
-        }
-
-        else
-        {
-            header("Location:../login.php");
-        }
-
-        
-
-    }
-
-    else
-    {
-        header("Location:../login.php");
-    }
-
-
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,6 +8,7 @@ session_start();
         <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
         <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/serviceprovider.css">
         <script src="/event_organizer_and_management_portal/view/js/serviceprovider.js" defer></script>
+        
 
     </head>
     <body>
@@ -48,9 +24,6 @@ session_start();
             <li class="logout-item"><a href="../logout.php">Logout</a></li>
             </ul>  
         </nav>   
-        <div class="main-content">
-            <h1>Welcome,<?php echo htmlspecialchars($_SESSION['username']);?></h1>
-            <p> Select an option from the sidebar </p>
      </div>
     </body>
 </html>

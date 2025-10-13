@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/external.css">
         <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/serviceprovider.css">
+        <link rel="stylesheet" href="/event_organizer_and_management_portal/view/css/table.css">
         <script src="/event_organizer_and_management_portal/view/js/serviceprovider.js" defer></script>
 
     </head>
@@ -16,7 +17,8 @@
                 <div class="logo">EventM</div> 
                 <h3 style="color:white" display>Dashboard</h3>
                 <ul>
-                <li><a href="/event_organizer_and_management_portal/view/serviceprovider/seviceprovider.php">Track Tasks</a></li><br>
+                <li><a href="/event_organizer_and_management_portal/view/serviceprovider/serviceprovider.php">Dashboard</a></li><br>
+                <li><a href="/event_organizer_and_management_portal/view/serviceprovider/tasktrack.php">Track Tasks</a></li><br>
                 <li><a href="/event_organizer_and_management_portal/view/serviceprovider/upcomingevent.php">View Upcoming Events</a></li><br>
                 <li><a href="/event_organizer_and_management_portal/view/serviceprovider/registerservice.php">Register Service</a></li><br>
                 
@@ -26,7 +28,7 @@
             </nav> 
             <h2>Upcoming Events</h2>
             <button id="refresh-btn">Refresh</button>
-            <table border="1" id="eventsTable">
+            <table class="event-table">
                 <tr>
                     <th>ID</th>
                     <th>Event Name</th>

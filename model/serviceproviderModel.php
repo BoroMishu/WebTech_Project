@@ -1,6 +1,5 @@
 <?php
 require_once("database.php");
-
 function  addService($service_provider_id, $service_type, $service_price)
 {
     $conn =getConnection();
