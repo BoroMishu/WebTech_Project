@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:4306
--- Generation Time: Oct 03, 2025 at 05:54 PM
+-- Host: 127.0.0.1
+-- Generation Time: Oct 14, 2025 at 01:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,11 +39,9 @@ CREATE TABLE `booking_table` (
 --
 
 INSERT INTO `booking_table` (`booking_id`, `customer_id`, `event_id`, `booking_date`) VALUES
-(1, 1, 3, '2025-09-27'),
-(3, 1, 1, '0000-00-00'),
-(4, 1, 2, '0000-00-00'),
-(5, 1, 2, '0000-00-00'),
-(6, 1, 2, '0000-00-00');
+(35, 4, 7, '2025-10-13'),
+(36, 1, 5, '2025-10-13'),
+(37, 13, 8, '2025-10-13');
 
 -- --------------------------------------------------------
 
@@ -59,17 +57,19 @@ CREATE TABLE `customer_table` (
   `customer_full_name` varchar(100) NOT NULL,
   `customer_gender` varchar(50) NOT NULL,
   `customer_contact_no` varchar(20) NOT NULL,
-  `customer_email_address` varchar(50) NOT NULL,
-  `payment_history` text DEFAULT NULL
+  `customer_email_address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer_table`
 --
 
-INSERT INTO `customer_table` (`customer_id`, `user_id`, `customer_username`, `customer_password`, `customer_full_name`, `customer_gender`, `customer_contact_no`, `customer_email_address`, `payment_history`) VALUES
-(1, 3, 'customer', '3333', 'customer', 'male', '01873904874', 'customer@gmail.com', NULL),
-(4, 3, 'nabil', '1234', 'hasibulnabil', 'male', '0187202002', 'has@email.com', NULL);
+INSERT INTO `customer_table` (`customer_id`, `user_id`, `customer_username`, `customer_password`, `customer_full_name`, `customer_gender`, `customer_contact_no`, `customer_email_address`) VALUES
+(1, 3, 'customer', '3333', 'customer', 'male', '01873904874', 'customer@gmail.com'),
+(4, 3, 'nabil', '1234', 'hasibulnabil', 'male', '0187202002', 'has@email.com'),
+(13, 3, 'maru', 'dhinkachika', 'Maria Binte Yousuf', 'female', '01406476222', 'mariabinteyousuf@gmail.com'),
+(15, 3, 'shoaib', 'kk', 'shoaib kabir', 'male', '01406476222', 'shoaib@gmail.com'),
+(16, 3, 'khan', '2233', 'khan', 'male', '01711442158', 'khan@gmail.com');
 
 --
 -- Triggers `customer_table`
@@ -106,10 +106,12 @@ CREATE TABLE `event_table` (
 --
 
 INSERT INTO `event_table` (`event_id`, `manager_id`, `event_type`, `event_status`, `event_price`) VALUES
-(1, 1, 'wedding', 'Active', 34500.00),
-(2, 1, 'wedding', 'Inactive', 50000.00),
-(3, 1, 'Birthday', 'Active', 17000.00),
-(4, 1, 'festival', 'Active', 30000.00);
+(1, 1, 'Wedding', 'available', 35000.00),
+(2, 1, 'Wedding', 'available', 51000.00),
+(3, 1, 'Birthday', 'available', 17000.00),
+(5, 1, 'corporate conference', 'booked', 51000.00),
+(7, 1, 'convocation', 'booked', 35000.00),
+(8, 1, 'award ceremony', 'booked', 51000.00);
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,7 @@ CREATE TABLE `service_provider_table` (
 --
 
 INSERT INTO `service_provider_table` (`service_provider_id`, `user_id`, `manager_id`, `service_provider_username`, `service_provider_name`, `service_provider_email`, `service_provider_password`, `service_provider_gender`, `service_provider_contact_no`) VALUES
-(1, 2, 1, 'nabil', 'Hasibul Nabil', 'nabil@gmail.com', '3434', 'Male', '01456783945');
+(1, 2, 1, 'nabil', 'Hasibul Nabil', 'nabil@gmail.com', '2070', 'Male', '01456783945');
 
 --
 -- Triggers `service_provider_table`
@@ -191,6 +193,19 @@ CREATE TRIGGER `after_service_provider_insert` AFTER INSERT ON `service_provider
 END
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_provider_tasks`
+--
+
+CREATE TABLE `service_provider_tasks` (
+  `task_id` int(11) NOT NULL,
+  `service_provider_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `task_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -227,7 +242,12 @@ INSERT INTO `users_table` (`user_id`, `username`, `email`, `password`, `role`) V
 (1, 'manager', 'manager@gmail.com', '1111', 1),
 (2, 'serviceProvider', 'serviceProvider@gmail.com', '2222', 2),
 (3, 'customer', 'customer@gmail.com', '3333', 3),
-(4, 'nabil', 'has@email.com', '1234', 3);
+(4, 'nabil', 'has@email.com', '1234', 3),
+(5, 'maria4', 'maria@gmail.com', '5454', 2),
+(6, 'maliha3', 'maliha@gmail.com', '32332', 2),
+(7, 'maru', 'mariabinteyousuf@gmail.com', 'dhinkachika', 3),
+(9, 'shoaib', 'shoaib@gmail.com', 'kk', 3),
+(10, 'khan', 'khan@gmail.com', '2233', 3);
 
 --
 -- Indexes for dumped tables
@@ -271,6 +291,13 @@ ALTER TABLE `service_provider_table`
   ADD KEY `fk_serviceprovider_manager` (`manager_id`);
 
 --
+-- Indexes for table `service_provider_tasks`
+--
+ALTER TABLE `service_provider_tasks`
+  ADD PRIMARY KEY (`task_id`),
+  ADD KEY `service_table_ibfk_2` (`service_provider_id`);
+
+--
 -- Indexes for table `service_table`
 --
 ALTER TABLE `service_table`
@@ -293,19 +320,19 @@ ALTER TABLE `users_table`
 -- AUTO_INCREMENT for table `booking_table`
 --
 ALTER TABLE `booking_table`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `customer_table`
 --
 ALTER TABLE `customer_table`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `event_table`
 --
 ALTER TABLE `event_table`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `manager_table`
@@ -317,19 +344,25 @@ ALTER TABLE `manager_table`
 -- AUTO_INCREMENT for table `service_provider_table`
 --
 ALTER TABLE `service_provider_table`
-  MODIFY `service_provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `service_provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `service_provider_tasks`
+--
+ALTER TABLE `service_provider_tasks`
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `service_table`
 --
 ALTER TABLE `service_table`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -367,6 +400,12 @@ ALTER TABLE `manager_table`
 ALTER TABLE `service_provider_table`
   ADD CONSTRAINT `fk_serviceprovider_manager` FOREIGN KEY (`manager_id`) REFERENCES `manager_table` (`manager_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `service_provider_table_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `service_provider_tasks`
+--
+ALTER TABLE `service_provider_tasks`
+  ADD CONSTRAINT `service_table_ibfk_2` FOREIGN KEY (`service_provider_id`) REFERENCES `service_provider_tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `service_table`
